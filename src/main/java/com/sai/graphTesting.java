@@ -13,17 +13,20 @@ public class graphTesting {
         graph.addVertex("E");
         graph.addVertex("F");
         graph.addVertex("G");
+        graph.addVertex("H");
         graph.addEdge("A", "B", 3);
         graph.addEdge("A", "C", 2);
-        graph.addEdge("A", "F", 2);
-        graph.addEdge("B", "D", 7);
-        graph.addEdge("D", "F", 1);
-        graph.addEdge("C", "E", 6);
+        graph.addEdge("A", "D", 2);
+        graph.addEdge("B", "E", 7);
+        graph.addEdge("C", "F", 1);
+        graph.addEdge("D", "H", 6);
         graph.addEdge("E", "G", 5);
-        graph.addEdge("G", "F", 4);
-        graph.addEdge("B", "E", 1);
+        graph.addEdge("F", "G", 4);
+        graph.addEdge("H", "G", 1);
         BreadthFirstTraversal bfs=new BreadthFirstTraversal();
         System.out.println(bfs.breadthFirstTraversal(graph,"A"));
+        DepthFirstTraversal dfs=new DepthFirstTraversal();
+        System.out.println(dfs.depthFirstTraversal(graph,"A"));
 
     }
 }

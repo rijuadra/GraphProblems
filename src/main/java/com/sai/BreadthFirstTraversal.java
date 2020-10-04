@@ -8,14 +8,16 @@ import java.util.*;
 public class BreadthFirstTraversal {
     public Set<String> breadthFirstTraversal(IGraph graph, String source) {
         Set<String> visitedVertices = new LinkedHashSet<>();
-        Queue<String> queue = new LinkedList();
-        queue.add(source);
+        Queue<String> queue = new LinkedList<>();
+        queue.offer(source);
         while (!queue.isEmpty()) {
-            String removedNode = queue.remove();
-            visitedVertices.add(removedNode);
-            for (Edge edge : graph.getAdjacentList(removedNode)) {
-                if (!visitedVertices.contains(edge.getVertex()))
-                    queue.add(edge.getVertex());
+            String removedVertex = queue.poll();
+            visitedVertices.add(removedVertex);
+            ArrayList<Edge> adjacentList = graph.getAdjacentList(removedVertex);
+            for (Edge edge : adjacentList) {
+                String adjVertex = edge.getVertex();
+                if (!visitedVertices.contains(adjVertex))
+                    queue.offer(adjVertex);
             }
         }
         return visitedVertices;
